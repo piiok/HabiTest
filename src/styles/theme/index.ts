@@ -1,5 +1,9 @@
-import colors from './colors';
+import palette from './palette';
+import breakpoints from './breakpoints';
+import common from './common';
 
 export default {
-  colors,
+  palette,
+  breakpoints,
+  common,
 };
