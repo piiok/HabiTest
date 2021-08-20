@@ -16,6 +16,7 @@ const steps: Step[] = [
     order: 2,
     description: 'Por favor el nombre completo del barrio.',
     backName: 'neighborhood',
+    required: true,
   },
 ];
 const stepsOrder = steps.sort((step) => step.order);

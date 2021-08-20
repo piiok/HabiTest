@@ -1,13 +1,16 @@
-import { FC } from 'react';
-import Step from '@/types/Step';
-import Input from '@/components/atoms/Fields/Input';
+import { Container, Paper } from '@/components/atoms';
+import { MainStyled } from './Form.styles';
+import FormRecolector from './FormRecolector';
 
-const Form: FC<Step> = () => {
+const Form = () => {
   return (
-    <h1>
-      Holiwis
-      <Input id="hola" fullWidth />
-    </h1>
+    <MainStyled>
+      <Container>
+        <Paper>
+          <FormRecolector />
+        </Paper>
+      </Container>
+    </MainStyled>
   );
 };
 

@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   :root{
     --transition: 0.2;
-    --border-radius: 6;
   }
   html {
     font-size: 16px;

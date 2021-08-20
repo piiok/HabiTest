@@ -5,6 +5,7 @@ type Step = {
   order: number;
   description: string;
   backName: string;
+  required?: boolean;
 };
 
 export default Step;

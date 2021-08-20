@@ -5,6 +5,11 @@ export type FormStore = {
     step: Step;
     index: number;
     value: any;
+    error?: {
+      code: number;
+      message: string;
+      internalMessage?: string;
+    };
   };
   data: Record<string, string>;
 };
