@@ -1,4 +1,4 @@
-import { useCallback, FC } from 'react';
+import { useCallback, FC, ChangeEvent } from 'react';
 import Input from '@/components/atoms/Fields/Input';
 import Grid from '@/components/atoms/Grid';
 import Typography from '@/components/atoms/Typography';
@@ -22,7 +22,10 @@ const FormRecolector: FC = ({ children }) => {
   } = useSelector((store) => store.form.currentStep);
 
   const handleStepValue = useCallback(
-    ({ target: { value } }: Event) => dispatch(update(value)),
+    ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const value = target.value || '';
+      dispatch(update(value));
+    },
     [],
   );
 
