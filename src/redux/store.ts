@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import rootReducers from './reducers';
 
 const persistConfig = {
-  key: 'root2',
+  key: 'root3',
   version: 1,
   storage,
   whitelist: ['form'],

@@ -2,7 +2,7 @@ import { createAction } from '@reduxjs/toolkit';
 import { FormStore } from '@/types/Store';
 import ActionHandler, { Handler } from '@/types/ActionHandler';
 import steps from '@/constants/steps';
-import { initialCurrentStep } from './initialState';
+import initialState, { initialCurrentStep } from './initialState';
 import { FORM } from '../../action-type';
 
 export const update = createAction<any>(FORM.UPDATE);
@@ -55,13 +55,7 @@ const finishHandler: Handler<FormStore> = (state) => {
     };
   }
   return {
-    data: {
-      ...data,
-      [currentStep.step.backName]: currentStep.value,
-    },
-    currentStep: {
-      ...initialCurrentStep,
-    },
+    ...initialState,
   };
 };
 

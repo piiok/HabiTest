@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, FC } from 'react';
 import Input from '@/components/atoms/Fields/Input';
 import Grid from '@/components/atoms/Grid';
 import Typography from '@/components/atoms/Typography';
@@ -11,7 +11,7 @@ import { update, nextStep, finish } from '@/redux/reducers/form/action';
 
 import { DivStyled } from './FormRecolector.styles';
 
-const FormRecolector = () => {
+const FormRecolector: FC = ({ children }) => {
   const dispatch = useDispatch();
   const {
     step: { title, description, backName },
@@ -22,8 +22,7 @@ const FormRecolector = () => {
   } = useSelector((store) => store.form.currentStep);
 
   const handleStepValue = useCallback(
-    ({ target: { value } }: { target: { value: string } }) =>
-      dispatch(update(value)),
+    ({ target: { value } }: Event) => dispatch(update(value)),
     [],
   );
 
@@ -49,9 +48,9 @@ const FormRecolector = () => {
       <DivStyled>
         <Input
           id={backName}
-          defaultValue={value}
+          value={value}
           fullWidth
-          onBlur={handleStepValue}
+          onChange={handleStepValue}
         />
       </DivStyled>
       <Grid
@@ -68,6 +67,7 @@ const FormRecolector = () => {
           {isLast ? 'Finalizar' : 'Siguiente'}
         </Button>
       </Grid>
+      {children}
     </>
   );
 };

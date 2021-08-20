@@ -104,6 +104,7 @@ const GridRoot = styled.div<GridRootProp>`
     display: flex;
     flexWrap: wrap;
     width: 100%;
+    max-width: 100%;
       `}
 
   ${({ item }) =>
