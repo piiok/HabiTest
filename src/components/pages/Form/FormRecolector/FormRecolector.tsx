@@ -3,7 +3,9 @@ import Input from '@/components/atoms/Fields/Input';
 import Grid from '@/components/atoms/Grid';
 import Typography from '@/components/atoms/Typography';
 import Button from '@/components/atoms/Button';
+import ProgessiveBar from '@/components/atoms/ProgessiveBar';
 
+import steps from '@/constants/steps';
 import { useSelector, useDispatch } from '@/hooks/redux';
 import { update, nextStep } from '@/redux/reducers/form/action';
 
@@ -14,6 +16,7 @@ const FormRecolector = () => {
   const {
     step: { title, description, backName },
     error,
+    index,
     value,
     isLast,
   } = useSelector((store) => store.form.currentStep);
@@ -24,26 +27,22 @@ const FormRecolector = () => {
     [],
   );
 
-  const onClickNext = () => (isLast ? dispatch(nextStep()) : null);
+  const onClickNext = () => (isLast ? null : dispatch(nextStep()));
 
   return (
     <>
+      <ProgessiveBar total={steps.length} completed={index} />
       <Typography
         align="center"
         bold
         color="primary"
         component="h1"
         variant="h6"
+        style={{ marginTop: '20px', marginBottom: '20px' }}
       >
         {title}
       </Typography>
-      <Typography
-        variant="body1"
-        component="p"
-        color="gray"
-        bold
-        style={{ marginTop: '20px' }}
-      >
+      <Typography variant="body1" component="p" color="gray" bold>
         {description}
       </Typography>
       <DivStyled>
