@@ -12,6 +12,7 @@ export type FormStore = {
       internalMessage?: string;
     };
   };
+  finished?: boolean;
   data: Record<string, string>;
 };
 

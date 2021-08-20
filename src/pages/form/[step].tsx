@@ -9,8 +9,12 @@ import Step from '@/types/Step';
 const Form: NextPage<Step> = (props) => {
   const { path } = props;
   const router = useRouter();
-  const { currentStep } = useSelector((store) => store.form);
+  const { currentStep, finished } = useSelector((store) => store.form);
   const { title, description } = currentStep.step;
+
+  if (finished) {
+    router.replace(`/form/success`);
+  }
 
   if (currentStep.step?.path !== path) {
     router.replace(`/form/${currentStep.step?.path}`);

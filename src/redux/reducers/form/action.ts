@@ -42,7 +42,7 @@ const nextStepHandler: Handler<FormStore> = (state) => {
 
 export const finish = createAction(FORM.FINISH);
 const finishHandler: Handler<FormStore> = (state) => {
-  const { data, currentStep } = state;
+  const { currentStep } = state;
   if (currentStep.step.required && currentStep.value === '') {
     return {
       ...state,
@@ -56,8 +56,14 @@ const finishHandler: Handler<FormStore> = (state) => {
   }
   return {
     ...initialState,
+    finished: true,
   };
 };
+
+export const restart = createAction(FORM.RESTART);
+const restartHandler: Handler<FormStore> = () => ({
+  ...initialState,
+});
 
 const ACTION_HANDLER: ActionHandler<FormStore> = [
   {
@@ -71,6 +77,10 @@ const ACTION_HANDLER: ActionHandler<FormStore> = [
   {
     action: finish,
     handler: finishHandler,
+  },
+  {
+    action: restart,
+    handler: restartHandler,
   },
 ];
 
