@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Grid } from '@/components/atoms';
 
 export const MainStyled = styled.main`
   --padding-top: 50px;
