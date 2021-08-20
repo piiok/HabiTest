@@ -7,7 +7,7 @@ import ProgessiveBar from '@/components/atoms/ProgessiveBar';
 
 import steps from '@/constants/steps';
 import { useSelector, useDispatch } from '@/hooks/redux';
-import { update, nextStep } from '@/redux/reducers/form/action';
+import { update, nextStep, finish } from '@/redux/reducers/form/action';
 
 import { DivStyled } from './FormRecolector.styles';
 
@@ -27,7 +27,8 @@ const FormRecolector = () => {
     [],
   );
 
-  const onClickNext = () => (isLast ? null : dispatch(nextStep()));
+  const onClickNext = () =>
+    isLast ? dispatch(finish()) : dispatch(nextStep());
 
   return (
     <>

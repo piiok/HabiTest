@@ -40,6 +40,31 @@ const nextStepHandler: Handler<FormStore> = (state) => {
   };
 };
 
+export const finish = createAction(FORM.FINISH);
+const finishHandler: Handler<FormStore> = (state) => {
+  const { data, currentStep } = state;
+  if (currentStep.step.required && currentStep.value === '') {
+    return {
+      ...state,
+      currentStep: {
+        ...currentStep,
+        error: {
+          message: 'Campo requerido',
+        },
+      },
+    };
+  }
+  return {
+    data: {
+      ...data,
+      [currentStep.step.backName]: currentStep.value,
+    },
+    currentStep: {
+      ...initialCurrentStep,
+    },
+  };
+};
+
 const ACTION_HANDLER: ActionHandler<FormStore> = [
   {
     action: update,
@@ -48,6 +73,10 @@ const ACTION_HANDLER: ActionHandler<FormStore> = [
   {
     action: nextStep,
     handler: nextStepHandler,
+  },
+  {
+    action: finish,
+    handler: finishHandler,
   },
 ];
 
