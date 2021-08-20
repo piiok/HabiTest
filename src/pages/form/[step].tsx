@@ -1,18 +1,25 @@
+import { useRouter } from 'next/router';
 import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import Head from '@/components/atoms/Head';
 import FormContained from '@/components/pages/Form';
+import { useSelector } from '@/hooks/redux';
 import steps from '@/constants/steps';
 import Step from '@/types/Step';
 
-const Form: NextPage<Step> = ({ ...others }) => {
+const Form: NextPage<Step> = (props) => {
+  const { path } = props;
+  const router = useRouter();
+  const { currentStep } = useSelector((store) => store.form);
+  const { title, description } = currentStep.step;
+
+  if (currentStep.step?.path !== path) {
+    router.replace(`/form/${currentStep.step?.path}`);
+  }
+
   return (
     <>
-      <Head
-        title="Datos cliente"
-        description="Te ayudaremos a vender tu apartamento! Sin complicaciones, facil y seguro!"
-      />
-      hello
-      <FormContained {...others} />
+      <Head title={`Formulario | ${title}`} description={description} />
+      <FormContained />
     </>
   );
 };

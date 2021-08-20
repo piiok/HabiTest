@@ -1,9 +1,7 @@
-import { createAction } from '@reduxjs/toolkit';
 import { FormStore } from '@/types/Store';
 import ActionHandler, { Handler } from '@/types/ActionHandler';
 import { FORM } from '../../action-type';
 
-const update = createAction(FORM.UPDATE);
 const updateHandler: Handler<FormStore, any> = (state, action) => {
   return {
     ...state,
@@ -11,7 +9,6 @@ const updateHandler: Handler<FormStore, any> = (state, action) => {
   };
 };
 
-const nextStep = createAction(FORM.NEXT_STEP);
 const nextStepHandler: Handler<FormStore> = (state, action) => {
   return {
     ...state,
@@ -21,11 +18,11 @@ const nextStepHandler: Handler<FormStore> = (state, action) => {
 
 const ACTION_HANDLER: ActionHandler<FormStore> = [
   {
-    action: update,
+    action: FORM.UPDATE,
     handler: updateHandler,
   },
   {
-    action: nextStep,
+    action: FORM.NEXT_STEP,
     handler: nextStepHandler,
   },
 ];

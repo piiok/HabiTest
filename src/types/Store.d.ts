@@ -2,7 +2,7 @@ import Step from './Step.d';
 
 export type FormStore = {
   currentStep: {
-    step: Step | undefined;
+    step: Step;
     index: number;
     value: any;
   };

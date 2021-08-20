@@ -1,4 +1,5 @@
 type Step = {
+  title: string;
   component: 'Text';
   path: string;
   order: number;
