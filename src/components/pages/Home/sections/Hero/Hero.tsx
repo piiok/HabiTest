@@ -1,7 +1,10 @@
 import { Typography, Button, Grid, Container, Link } from '@/components/atoms';
 import { Section, GridStyled, Item } from './Hero.styled';
+import useSelector from '@/hooks/redux/useSelector';
 
 const Hero = () => {
+  const { path } = useSelector((store) => store.form.currentStep.step);
+
   return (
     <Section>
       <Container>
@@ -32,7 +35,7 @@ const Hero = () => {
                 ¡Vende tu apartamento!
               </Typography>
             </Grid>
-            <Link href="/form">
+            <Link href={`/form/${path}`}>
               <Button color="primary">Vender</Button>
             </Link>
           </Item>

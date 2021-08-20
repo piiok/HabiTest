@@ -5,8 +5,9 @@ export type FormStore = {
     step: Step;
     index: number;
     value: any;
+    isLast?: boolean;
     error?: {
-      code: number;
+      code?: number;
       message: string;
       internalMessage?: string;
     };

@@ -10,7 +10,9 @@ function createReducer<T>(
   ACTION_HANDLER: ActionHandler<T>,
 ): Reducer<T, AnyAction> {
   return createReducerRTK(initialState, (builder) => {
-    builder.addCase(ACTION_HANDLER[0].action, ACTION_HANDLER[0].handler);
+    ACTION_HANDLER.forEach(({ action, handler }) =>
+      builder.addCase(action, handler),
+    );
   });
 }
 export default createReducer;

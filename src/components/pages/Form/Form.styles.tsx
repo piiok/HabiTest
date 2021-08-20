@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const MainStyled = styled.main`
-  min-height: 100vh;
+  --padding-top: 50px;
   background-image: url(/images/offices/office-1.jpg);
   background-size: auto 100%;
   background-position: center;
-  padding-top: 50px;
+  min-height: calc(100vh - var(--padding-top));
+  padding-top: var(--padding-top);
   @media (min-width: ${({ theme }) => theme.breakpoints.values.lg}px) {
+    --padding-top: 100px;
     background-size: 100% auto;
-    padding-top: 100px;
   }
 `;
