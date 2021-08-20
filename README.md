@@ -3,10 +3,12 @@
 Para visualizar la aplicacion basta con ejecutar: 
 
 ```
+yarn
 yarn dev
 ```
 o
 ```
+npm i
 npm run dev
 ```
 
